@@ -28,15 +28,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Application definition
 
 INSTALLED_APPS = [
     'ajay1.apps.Ajay1Config',
+    'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
@@ -120,6 +123,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
+
+
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')

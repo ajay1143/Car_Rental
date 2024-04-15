@@ -71,12 +71,15 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="mail_section_1">
-                        <form  method="POST" class="text-center">
+                        <form  method="POST" action="{% url 'login'%}" >
                             {% csrf_token %}
-                            <input type="text" class="mail_text" placeholder="Name" name="UserName">
-                            <input type="password" class="mail_text" placeholder="Password" name="Password">
-                            <button class="btn btn-primary mt-3">submit</button>
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" name="UserName"></div>
+                            <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" name="Password"></div>
+                            <button class="btn btn-secondary">submit</button>
                          </form>
+                         <p class="text-white text-center ">Not User : <a class = 'text-dark' href="{% url 'register' %}"> Register Here</a></p>
                      </div>
                   </div>
                </div>
@@ -145,13 +148,15 @@
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
-      <script src="static/js/jquery.min.js"></script>
-      <script src="static/js/popper.min.js"></script>
-      <script src="static/js/bootstrap.bundle.min.js"></script>
-      <script src="static/js/jquery-3.0.0.min.js"></script>
-      <script src="static/js/plugin.js"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'js/plugin.js' %}"></script>
       <!-- sidebar -->
-      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="static/js/custom.js"></script>
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
    </body>
 </html>

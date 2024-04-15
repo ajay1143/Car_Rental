@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from ajay1 import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index,name='learning'),
@@ -12,4 +14,6 @@ urlpatterns = [
     path("data_submit/",views.data_submit,name ='data_submit'),
     path("register/",views.register_user,name ='register'),
     path('login/',views.login_user,name ='login'),
-]
+    path('logout/',views.logout_user,name ='logout'),
+    path('cars/',views.add_car,name ='cars'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

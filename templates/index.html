@@ -39,11 +39,18 @@
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
+
                      <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                     </li><li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
+                        {% if user.is_authenticated %}
+                           <form action="{% url 'logout' %}" method="post">
+                                 {% csrf_token %}
+                                 <button type="submit" class="btn btn-link nav-link">Logout</button>
+                           </form>
+                        {% else %}
+                           <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% endif %}
                      </li>
+
                      <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                      </li>
@@ -423,7 +430,7 @@
             </div>
          </div>
       </div>
-      <!-- client section end -->
+      client section end -->
       <!-- contact section start 
       <div class="contact_section layout_padding">
          <div class="container">
@@ -452,7 +459,7 @@
             </div>
          </div>
       </div>
-      <!-- contact section end -->
+      contact section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
@@ -500,7 +507,7 @@
                </div>
             </div>
          </div>
-      </div> //-->
+      </div> 
       <!-- footer section end -->
       <!-- copyright section start -->
       <div class="copyright_section">
