@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Booking</title>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+<body>
+   
+    <div class="container">
+
+        <h1 class="heading">Car Booking</h1>
+        <form action="{% url 'submit_booking' %}" method="POST" class="booking-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+                <span class="error-message">{{ form.fullname.errors }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message">{{ form.email.errors }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <span class="error-message">{{ form.phone.errors }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="car_model">Car Model:</label>
+                <input type="text" id="car_model" name="car_model" required>
+                <span class="error-message">{{ form.car_model.errors }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="pickup_date">Pickup Date:</label>
+                <input type="date" id="pickup_date" name="pickup_date" required>
+                <span class="error-message">{{ form.pickup_date.errors }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="return_date">Return Date:</label>
+                <input type="date" id="return_date" name="return_date" required>
+                <span class="error-message">{{ form.return_date.errors }}</span>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Booking</button>
+        </form>
+    </div>
+   
+</body>
+</html>

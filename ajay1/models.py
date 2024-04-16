@@ -30,4 +30,14 @@ class Car(models.Model):
 
 
 
+class Booking(models.Model):
+    fullname = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    car_model = models.CharField(max_length=100)
+    pickup_date = models.DateField()
+    return_date = models.DateField()
+
+    def __str__(self):
+        return self.fullname
 

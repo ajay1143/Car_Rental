@@ -3,9 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Contact_Us, CarUser
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from .models import Car
+from .models import Car , Booking
 from django.contrib.auth.models import User
+from .forms import BookingForm
+
 
 
 def index(request):
@@ -128,6 +129,18 @@ def login_user(request):
 
     return HttpResponse("Method not allowed", status=405)
 
+def submit_booking(request):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            # Process the form data and save the booking
+            form.save()
+            # Redirect to a thank you page or any other appropriate page
+            return redirect('booking_success')
+    else:
+        form = BookingForm()
+    return render(request, 'booking.html', {'form': form})
+
 
 
 def logout_user(request):
@@ -160,3 +173,21 @@ def add_car(request):
         return redirect('gallery')  # Redirect to gallery page after adding the car
 
     return render(request, 'add_car.html')
+
+
+
+def submit_booking(request):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            # Process the form data and save the booking
+            form.save()
+            # Redirect to the booking confirmation page
+            return redirect('booking_success')
+    else:
+        form = BookingForm()
+    return render(request, 'booking.html', {'form': form})
+
+def booking_success(request):
+    return render(request, 'booking_success.html')
+
